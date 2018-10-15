@@ -109,3 +109,31 @@ button {
 .ai-s {
   align-self: stretch;
 }
+
+/* App-specific styling */
+
+.wallet {
+  width: 300px;
+  height: 500px;
+}
+
+
+
+/* Testing */
+
+.test-1 {
+  outline: 2px solid blue;
+}
+
+.test-2 {
+  outline: 2px solid green;
+}
+
+.test-3 {
+  outline: 2px solid red;
+}
+
+.test-4 {
+  outline: 2px solid orange;
+}
+
