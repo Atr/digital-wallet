@@ -1,8 +1,13 @@
 import React from 'react';
 
-const HeaderBar = props => (
+const HeaderBar = ({ changeToAddFundingOptionPage }) => (
   <div className="header-bar test-3">
-    <p> Add funding option and manage buttons go here </p>
+    <button type="button" onClick={changeToAddFundingOptionPage} >    
+      Add
+    </button>
+    <button type="button" onClick={() => { console.log('Manage button not yet functional')}}>
+      Manage
+    </button>
   </div>
 );
 

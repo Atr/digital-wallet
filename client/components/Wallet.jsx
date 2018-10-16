@@ -7,7 +7,7 @@ class Wallet extends React.Component {
   constructor(props) {
     super(props);
 
-    // function bind area
+    this.changeToAddFundingOptionPage = this.changeToAddFundingOptionPage.bind(this);
 
     this.state = {
       page: 'home',
@@ -35,11 +35,22 @@ class Wallet extends React.Component {
     });
   }
 
+  changeToAddFundingOptionPage() {
+    this.setState({
+      page: 'addFundingOption',
+    });
+  }
+
   render() {
     let componentToRender;
     const { page, fundingOptions } = this.state;
     if (page === 'home') {
-      componentToRender = <FundingOptionsSection fundingOptions={fundingOptions} />;
+      componentToRender = (
+        <FundingOptionsSection
+          fundingOptions={fundingOptions}
+          changeToAddFundingOptionPage={this.changeToAddFundingOptionPage}
+        />
+      );
     } else if (page === 'addFundingOption') {
       componentToRender = <AddFundingOption />;
     }
