@@ -1,17 +1,33 @@
 import React from 'react';
 
-const Wallet = props => (
-  <div className="wallet fc fd-c jc-sa ai-c">
-    <div className="title">
-      <h1> Wallet </h1>
-    </div>
-    <div className="header-bar">
-      <p> HeaderBar goes here </p>
-    </div>
-    <div className="funding-options-section">
-      <p> FundingOptions go here </p>
-    </div>
-  </div>
-);
+import FundingOptionsSection from './FundingOptionsSection';
+import AddFundingOption from './AddFundingOption';
+
+class Wallet extends React.Component {
+  constructor(props) {
+    super(props);
+
+    // function bind area
+
+    this.state = {
+      page: 'hme',
+    };
+  }
+
+  render() {
+    let componentToRender;
+    const { page } = this.state;
+    page === 'home' ? componentToRender = <FundingOptionsSection /> : componentToRender = <AddFundingOption />;
+
+    return (
+      <div className="wallet fc fd-c jc-sa ai-c test-1">
+        <div className="title">
+          <h1> Wallet </h1>
+        </div>
+        {componentToRender}
+      </div>
+    );
+  }
+}
 
 export default Wallet;
