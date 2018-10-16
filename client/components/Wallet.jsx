@@ -11,7 +11,7 @@ class Wallet extends React.Component {
     this.changeToAddFundingOptionPage = this.changeToAddFundingOptionPage.bind(this);
 
     this.state = {
-      page: 'editFundingOption',
+      page: 'addFundingOption',
       fundingOptions: [],
     };
   }
