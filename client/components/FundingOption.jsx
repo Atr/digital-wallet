@@ -1,8 +1,17 @@
 import React from 'react';
 
-const FundingOption = props => (
+const FundingOption = ({ option }) => (
   <div className="funding-option test-4">
-    <p> Funding option (card last 4 digits, any buttons) goes here </p>
+    <div className="funding-option-brand">
+      <p>
+        {option.cardBrand}
+      </p>
+    </div>
+    <div className="funding-option-digits">
+      <p>
+        {option.cardLastDigits}
+      </p>
+    </div>
   </div>
 );
 
