@@ -2,6 +2,7 @@ import React from 'react';
 
 import FundingOptionsSection from './FundingOptionsSection';
 import AddFundingOption from './AddFundingOption';
+import EditFundingOption from './EditFundingOption';
 
 class Wallet extends React.Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class Wallet extends React.Component {
     this.changeToAddFundingOptionPage = this.changeToAddFundingOptionPage.bind(this);
 
     this.state = {
-      page: 'home',
+      page: 'editFundingOption',
       fundingOptions: [],
     };
   }
@@ -44,15 +45,21 @@ class Wallet extends React.Component {
   render() {
     let componentToRender;
     const { page, fundingOptions } = this.state;
-    if (page === 'home') {
+    if (page === 'addFundingOption') {
+      componentToRender = (
+        <AddFundingOption />
+      );
+    } else if (page === 'editFundingOption') {
+      componentToRender = (
+        <EditFundingOption />
+      );
+    } else {
       componentToRender = (
         <FundingOptionsSection
           fundingOptions={fundingOptions}
           changeToAddFundingOptionPage={this.changeToAddFundingOptionPage}
         />
       );
-    } else if (page === 'addFundingOption') {
-      componentToRender = <AddFundingOption />;
     }
 
     return (
