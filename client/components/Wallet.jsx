@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import FundingOptionsSection from './FundingOptionsSection';
 import AddFundingOption from './AddFundingOption';
@@ -10,31 +11,33 @@ class Wallet extends React.Component {
 
     this.changeToAddFundingOptionPage = this.changeToAddFundingOptionPage.bind(this);
     this.changeToPage = this.changeToPage.bind(this);
+    this.fetchUserFundingOptions = this.fetchUserFundingOptions.bind(this);
+
+    const { userId } = this.props;
 
     this.state = {
       page: 'home',
       fundingOptions: [],
+      userId,
     };
   }
 
   componentDidMount() {
+    const { userId } = this.state;
+    this.fetchUserFundingOptions(userId);
+  }
 
-    const testData = [
-      {
-        cardId: 'johndoe0697',
-        cardBrand: 'American Express',
-        cardLastDigits: '0697',
-      },
-      {
-        cardId: 'johndoe2274',
-        cardBrand: 'Visa',
-        cardLastDigits: '2274',
-      },
-    ];
-
-    this.setState({
-      fundingOptions: testData,
-    });
+  fetchUserFundingOptions(userId) {
+    axios.get(`/api/users/${userId}/fundingoptions`)
+      .then((response) => {
+        const { data } = response;
+        this.setState({
+          fundingOptions: data,
+        });
+      })
+      .catch((error) => {
+        // Would have some kind of error handling in the application
+      });
   }
 
   changeToAddFundingOptionPage() {
