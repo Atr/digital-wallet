@@ -2,22 +2,74 @@ import React from 'react';
 
 import FundingOptionsSection from './FundingOptionsSection';
 import AddFundingOption from './AddFundingOption';
+import EditFundingOption from './EditFundingOption';
 
 class Wallet extends React.Component {
   constructor(props) {
     super(props);
 
-    // function bind area
+    this.changeToAddFundingOptionPage = this.changeToAddFundingOptionPage.bind(this);
+    this.changeToPage = this.changeToPage.bind(this);
 
     this.state = {
-      page: 'hme',
+      page: 'home',
+      fundingOptions: [],
     };
+  }
+
+  componentDidMount() {
+
+    const testData = [
+      {
+        cardId: 'johndoe0697',
+        cardBrand: 'American Express',
+        cardLastDigits: '0697',
+      },
+      {
+        cardId: 'johndoe2274',
+        cardBrand: 'Visa',
+        cardLastDigits: '2274',
+      },
+    ];
+
+    this.setState({
+      fundingOptions: testData,
+    });
+  }
+
+  changeToAddFundingOptionPage() {
+    this.setState({
+      page: 'addFundingOption',
+    });
+  }
+
+  changeToPage(pageTitle) {
+    this.setState({
+      page: pageTitle,
+    });
   }
 
   render() {
     let componentToRender;
-    const { page } = this.state;
-    page === 'home' ? componentToRender = <FundingOptionsSection /> : componentToRender = <AddFundingOption />;
+    const { page, fundingOptions } = this.state;
+    if (page === 'addFundingOption') {
+      componentToRender = (
+        <AddFundingOption
+          changeToPage={this.changeToPage}
+        />
+      );
+    } else if (page === 'editFundingOption') {
+      componentToRender = (
+        <EditFundingOption />
+      );
+    } else {
+      componentToRender = (
+        <FundingOptionsSection
+          fundingOptions={fundingOptions}
+          changeToPage={this.changeToPage}
+        />
+      );
+    }
 
     return (
       <div className="wallet fc fd-c jc-sa ai-c test-1">
