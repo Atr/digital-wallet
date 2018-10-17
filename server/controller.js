@@ -1,6 +1,9 @@
 // Note:  the Promise.resolve statements you see are just placeholders
 // In reality, they would be function calls to the database
-// that would return a promise based on whether the operation was successful or unsuccessful
+// that would return a promise based on whether the operation was successful or unsuccessful.
+// See the first function for a more realistic example of what it would look like in practice.
+
+const models = require('./models');
 
 const controller = {
   users: {
@@ -8,10 +11,13 @@ const controller = {
       // This callback would check to see if the user exists in the DB
       // If they didn't, it would return 404
       // Otherwise it would return that user's funding options
-      Promise.resolve('would send back a fundingOptions object with only cardBrand, cardLastDigits, cardId')
+      models.users.getFundingOptions(req.params.id)
         .then(data => res.status(200).json(data))
         .catch(error => res.status(404).json(error));
     },
+    // The function above this comment more closely matches what this file..
+    // ..would look like in practice.
+    // The ones below are simplified for time's sake.
     postFundingOption: (req, res) => {
       // This callback would check to see if the payment option already exists in the DB.
       // If it does, it would send back error 409.
