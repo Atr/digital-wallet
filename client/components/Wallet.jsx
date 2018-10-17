@@ -9,9 +9,10 @@ class Wallet extends React.Component {
     super(props);
 
     this.changeToAddFundingOptionPage = this.changeToAddFundingOptionPage.bind(this);
+    this.changeToPage = this.changeToPage.bind(this);
 
     this.state = {
-      page: 'addFundingOption',
+      page: 'home',
       fundingOptions: [],
     };
   }
@@ -42,12 +43,20 @@ class Wallet extends React.Component {
     });
   }
 
+  changeToPage(pageTitle) {
+    this.setState({
+      page: pageTitle,
+    });
+  }
+
   render() {
     let componentToRender;
     const { page, fundingOptions } = this.state;
     if (page === 'addFundingOption') {
       componentToRender = (
-        <AddFundingOption />
+        <AddFundingOption
+          changeToPage={this.changeToPage}
+        />
       );
     } else if (page === 'editFundingOption') {
       componentToRender = (
@@ -57,7 +66,7 @@ class Wallet extends React.Component {
       componentToRender = (
         <FundingOptionsSection
           fundingOptions={fundingOptions}
-          changeToAddFundingOptionPage={this.changeToAddFundingOptionPage}
+          changeToPage={this.changeToPage}
         />
       );
     }

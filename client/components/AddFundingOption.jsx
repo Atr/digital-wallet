@@ -27,11 +27,17 @@ class AddFundingOption extends React.Component {
   }
 
   render() {
+    const { changeToPage } = this.props;
     const { firstname, lastname, cardtype, cardnum, cardexpiry, cardcsc } = this.state;
 
     return (
       <div className="add-funding-option">
-        <p> Add debit or credit card </p>
+        <div>
+          <button type="button" onClick={() => { changeToPage('home'); }}>
+            &lt;
+          </button>
+          <p> Add debit or credit card </p>
+        </div>
         <form className="fc fd-c">
           <div className="add-funding-option-name fc">
             <input
