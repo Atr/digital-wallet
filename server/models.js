@@ -8,7 +8,7 @@ const testData = [
   {
     cardId: 'johndoe0697',
     cardBrand: 'American Express',
-    cardLastDigits: '0697',
+    cardLastDigits: '0692',
   },
   {
     cardId: 'johndoe2274',

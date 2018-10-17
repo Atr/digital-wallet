@@ -1,7 +1,12 @@
 import React from 'react';
 
 // Would need to add validation to these fields.
-// Need to make sure 'submit' doesn't send a get request with this information.
+
+// Note the 'Add' button at the bottom doesn't do anything currently.
+// In practice, I would have a function that would take the component's current state,..
+// ..format it into an object, then send a post request to the correct route with userId..
+// ..(which would need to be handed down as a prop but currently isn't) in order to..
+// ..add the funding option to the database.
 
 class AddFundingOption extends React.Component {
   constructor(props) {
@@ -102,9 +107,7 @@ class AddFundingOption extends React.Component {
             </div>
           </div>
           <div>
-            <button type="submit" value="submit">
-              <p> Add </p>
-            </button>
+            <input type="button" value="add" />
           </div>
         </form>
       </div>

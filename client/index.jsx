@@ -5,4 +5,7 @@ import Wallet from './components/Wallet';
 
 import './src/styles/styles.css';
 
-ReactDOM.render(<Wallet />, document.getElementById('app'));
+// In practice, this Id might be provided as part of authentication
+const exampleUserId = 82374;
+
+ReactDOM.render(<Wallet userId={exampleUserId} />, document.getElementById('app'));
